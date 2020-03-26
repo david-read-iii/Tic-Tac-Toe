@@ -40,26 +40,6 @@ public class Board {
         return board;
     }
 
-    public void setBoard(char[][] board) {
-        this.board = board;
-    }
-
-    public char getPlayer1() {
-        return player1;
-    }
-
-    public void setPlayer1(char player1) {
-        this.player1 = player1;
-    }
-
-    public char getPlayer2() {
-        return player2;
-    }
-
-    public void setPlayer2(char player2) {
-        this.player2 = player2;
-    }
-
     /**
      * Returns a string representing the state of the tic-tac-toe board.
      */
