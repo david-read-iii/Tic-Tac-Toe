@@ -14,22 +14,38 @@ public class Main {
         Board board = new Board('X', 'O');
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Input the INDEX of the row and column of your move (0-2)");
+
         // Print the blank state of the board.
         System.out.println(board.toString() + "\n");
 
+        System.out.println("PLAYER'S TURN (X): ");
+
         while(true) {
 
-            System.out.println("PLAYER'S TURN (X): ");
+            while(true){
+                try {
+                    // Determine the player's choice of action.
+                    System.out.print("Enter row: ");
+                    int row = scanner.nextInt();
 
-            // Determine the player's choice of action.
-            System.out.print("Enter row: ");
-            int row = scanner.nextInt();
+                    System.out.print("Enter column: ");
+                    int column = scanner.nextInt();
 
-            System.out.print("Enter column: ");
-            int column = scanner.nextInt();
+                    // Check if the space is blank. If so, take the action the player specifies and print the state of the board after the action is made.
+                    if (board.board[row][column] == board.player1 || board.board[row][column] == board.player2){
+                        System.out.println("That space is already taken. Try again.");
+                        continue;
+                    }
+                    board.makeMove(new Move(row, column), 1);
+                    break;
+                }
 
-            // Take the action the player specifies and print the state of the board after the action is made.
-            board.makeMove(new Move(row, column), 1);
+                // Catch ArrayIndexOutOfBoundsExceptions and return to the start of the player's turn.
+                catch (ArrayIndexOutOfBoundsException e){
+                    System.out.println("The index entered is out of bounds. Try again.");
+                }
+            }
 
             System.out.println("\n" + board.toString() + "\n");
 
